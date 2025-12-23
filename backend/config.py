@@ -25,6 +25,11 @@ class Settings(BaseSettings):
         default="https://api.marketaux.com/v1/news/all",
         env="MARKETAUX_BASE_URL",
     )
+    ob_fractal_period: int = Field(default=2, env="OB_FRACTAL_PERIOD")
+    ob_min_displacement_atr: float = Field(default=1.0, env="OB_MIN_DISPLACEMENT_ATR")
+    ob_min_score: float = Field(default=50.0, env="OB_MIN_SCORE")
+    ob_zone_type: str = Field(default="wick", env="OB_ZONE_TYPE")
+    ob_max_tests: int = Field(default=2, env="OB_MAX_TESTS")
 
     class Config:
         env_file = ".env"

@@ -95,6 +95,10 @@ docker-compose up --build
 bash scripts/test_api.sh
 ```
 
+## Order Block Detector (SMC)
+
+See the integration guide: `docs/order_blocks.md`
+
 ## E2E Checklist
 
 1. `POST /api/run/pattern-engine` returns CSV output reference.

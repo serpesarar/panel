@@ -11,6 +11,7 @@ from backend.routers import (
     pattern_engine,
     claude_patterns,
     claude_sentiment,
+    order_blocks,
 )
 from backend.services.data_fetcher import fetch_latest_price
 from backend.services.ml_service import run_nasdaq_signal, run_xauusd_signal
@@ -33,6 +34,7 @@ app.include_router(xauusd.router)
 app.include_router(pattern_engine.router)
 app.include_router(claude_patterns.router)
 app.include_router(claude_sentiment.router)
+app.include_router(order_blocks.router)
 
 
 @app.get("/api/health", response_model=HealthResponse)
