@@ -5,12 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+codex/generate-full-stack-trading-dashboard-code-sj6rja
+    "lint": "next lint",
+    "test": "vitest run"
+=======
  codex/generate-full-stack-trading-dashboard-code-cvecet
     "lint": "next lint",
     "test": "vitest run"
 =======
     "lint": "next lint"
+ main
  main
   },
   "dependencies": {
@@ -24,6 +28,11 @@
     "zustand": "4.5.4"
   },
   "devDependencies": {
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
+    "@testing-library/jest-dom": "6.4.6",
+    "@testing-library/react": "16.0.0",
+    "@vitejs/plugin-react": "4.3.1",
+=======
 codex/generate-full-stack-trading-dashboard-code-cvecet
     "@testing-library/jest-dom": "6.4.6",
     "@testing-library/react": "16.0.0",
@@ -37,10 +46,17 @@ codex/generate-full-stack-trading-dashboard-code-cvecet
     "typescript": "5.5.3",
     "vitest": "2.0.5"
 =======
+ main
     "autoprefixer": "10.4.19",
+    "jsdom": "24.1.0",
     "postcss": "8.4.38",
     "tailwindcss": "3.4.4",
+codex/generate-full-stack-trading-dashboard-code-sj6rja
+    "typescript": "5.5.3",
+    "vitest": "2.0.5"
+=======
     "typescript": "5.5.3"
  main
+main
   }
 }

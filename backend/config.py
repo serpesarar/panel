@@ -23,6 +23,7 @@ class Settings(BaseSettings):
         default="~/Desktop/trading-pattern-system/",
         env="CLAUDE_PATTERNS_PATH",
     )
+
     anthropic_api_key: str | None = Field(default=None, env="ANTHROPIC_API_KEY")
     eodhd_api_key: str | None = Field(default=None, env="EODHD_API_KEY")
     marketaux_api_key: str | None = Field(default=None, env="MARKETAUX_API_KEY")
@@ -43,6 +44,13 @@ codex/generate-full-stack-trading-dashboard-code-cvecet
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=False)
 =======
+
+    # Order Block Detector (SMC) settings
+    ob_fractal_period: int = Field(default=2, env="OB_FRACTAL_PERIOD")
+    ob_min_displacement_atr: float = Field(default=1.0, env="OB_MIN_DISPLACEMENT_ATR")
+    ob_min_score: float = Field(default=50.0, env="OB_MIN_SCORE")
+    ob_zone_type: str = Field(default="wick", env="OB_ZONE_TYPE")
+    ob_max_tests: int = Field(default=2, env="OB_MAX_TESTS")
 
     class Config:
         env_file = ".env"

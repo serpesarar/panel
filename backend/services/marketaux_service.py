@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+codex/generate-full-stack-trading-dashboard-code-sj6rja
+from typing import Dict, List
+=======
  codex/generate-full-stack-trading-dashboard-code-cvecet
 from typing import Dict, List
 =======
 from typing import List, Dict
 main
+ main
 
 import httpx
 
@@ -21,6 +25,9 @@ async def fetch_marketaux_headlines(symbols: List[str]) -> List[Dict[str, str]]:
         "limit": 10,
         "language": "en",
     }
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
+
+=======
  codex/generate-full-stack-trading-dashboard-code-cvecet
     url = settings.marketaux_base_url
     async with httpx.AsyncClient(timeout=10) as client:
@@ -32,12 +39,18 @@ async def fetch_marketaux_headlines(symbols: List[str]) -> List[Dict[str, str]]:
             for item in payload.get("data", [])
         ]
 =======
+ main
     async with httpx.AsyncClient(timeout=10.0) as client:
         response = await client.get(settings.marketaux_base_url, params=params)
         response.raise_for_status()
         data = response.json()
+
     return [
         {"title": item.get("title", ""), "source": item.get("source", "")}
         for item in data.get("data", [])
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
     ]
+=======
+    ]
+ main
  main

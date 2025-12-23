@@ -11,9 +11,13 @@ from backend.routers import (
     pattern_engine,
     claude_patterns,
     claude_sentiment,
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
+    order_blocks,
+=======
 codex/generate-full-stack-trading-dashboard-code-cvecet
     order_blocks,
     rtyhiim,
+ main
  main
 )
 from backend.services.data_fetcher import fetch_latest_price
@@ -48,11 +52,15 @@ app.include_router(xauusd.router)
 app.include_router(pattern_engine.router)
 app.include_router(claude_patterns.router)
 app.include_router(claude_sentiment.router)
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
+app.include_router(order_blocks.router)
+=======
  codex/generate-full-stack-trading-dashboard-code-cvecet
 app.include_router(order_blocks.router)
 app.include_router(rtyhiim.router)
 =======
  main
+main
 
 
 @app.get("/api/health", response_model=HealthResponse)
@@ -63,16 +71,23 @@ async def health_check() -> HealthResponse:
 @app.post("/api/run/all", response_model=RunAllResponse)
 async def run_all() -> RunAllResponse:
     start = time.perf_counter()
+
     nasdaq_price = await fetch_latest_price("NAS100.INDX")
     xauusd_price = await fetch_latest_price("XAUUSD")
+
     nasdaq_result = run_nasdaq_signal(current_price=nasdaq_price)
     xauusd_result = run_xauusd_signal(current_price=xauusd_price)
+
     pattern_result = run_pattern_engine(last_n=500, select_top=0.3, output_selected_only=True)
+
     claude_patterns_result = run_claude_pattern_analysis(
         symbol="NDX.INDX",
         timeframes=["5m", "15m", "30m", "1h", "4h", "1d"],
     )
     claude_sentiment_result = await run_claude_sentiment()
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
+
+=======
 codex/generate-full-stack-trading-dashboard-code-cvecet
     order_blocks_result = await order_block_service.detect(
         symbol="NDX.INDX",
@@ -83,7 +98,9 @@ codex/generate-full-stack-trading-dashboard-code-cvecet
     rtyhiim_result = run_rtyhiim_detector(symbol="NDX.INDX", timeframe="1m")
 =======
  main
+ main
     total_time_ms = int((time.perf_counter() - start) * 1000)
+
     return RunAllResponse(
         nasdaq=nasdaq_result,
         xauusd=xauusd_result,
