@@ -25,8 +25,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
     allow_credentials=True,
-    allow_methods=["*"] ,
-    allow_headers=["*"] ,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(nasdaq.router)
@@ -45,17 +45,23 @@ async def health_check() -> HealthResponse:
 @app.post("/api/run/all", response_model=RunAllResponse)
 async def run_all() -> RunAllResponse:
     start = time.perf_counter()
+
     nasdaq_price = await fetch_latest_price("NAS100.INDX")
     xauusd_price = await fetch_latest_price("XAUUSD")
+
     nasdaq_result = run_nasdaq_signal(current_price=nasdaq_price)
     xauusd_result = run_xauusd_signal(current_price=xauusd_price)
+
     pattern_result = run_pattern_engine(last_n=500, select_top=0.3, output_selected_only=True)
+
     claude_patterns_result = run_claude_pattern_analysis(
         symbol="NDX.INDX",
         timeframes=["5m", "15m", "30m", "1h", "4h", "1d"],
     )
     claude_sentiment_result = await run_claude_sentiment()
+
     total_time_ms = int((time.perf_counter() - start) * 1000)
+
     return RunAllResponse(
         nasdaq=nasdaq_result,
         xauusd=xauusd_result,

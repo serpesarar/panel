@@ -62,6 +62,7 @@ export default function HomePage() {
               </button>
             </div>
           </div>
+
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-4">
               {tickerItems.map((item) => (
@@ -70,6 +71,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+
             <div className="flex items-center gap-3 text-sm">
               <span className="text-textSecondary">Auto-refresh</span>
               {(["off", "30s", "60s"] as const).map((value) => (
@@ -98,13 +100,16 @@ export default function HomePage() {
             <NasdaqPanel />
             <XauusdPanel />
           </div>
+
           <div className="space-y-6">
             <PatternEnginePanel />
             <ClaudePatternPanel />
           </div>
+
           <div className="space-y-6">
             <SentimentPanel />
             <OrderBlockPanel />
+
             <div className="glass-card p-6 space-y-2 text-sm text-textSecondary">
               <p>Powered by Claude AI + Custom ML Models</p>
               <div className="flex items-center gap-2">
