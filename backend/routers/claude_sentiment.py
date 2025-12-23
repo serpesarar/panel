@@ -8,5 +8,5 @@ router = APIRouter(prefix="/api/claude", tags=["claude_sentiment"])
 
 @router.post("/analyze-sentiment", response_model=ClaudeSentimentResponse)
 async def analyze_sentiment() -> ClaudeSentimentResponse:
-    result = run_claude_sentiment()
+    result = await run_claude_sentiment()
     return ClaudeSentimentResponse(**result)
