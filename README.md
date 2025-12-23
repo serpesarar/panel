@@ -63,6 +63,7 @@ POST /api/run/nasdaq
 
 Returns NASDAQ ML signal.
 
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
 POST /api/run/xauusd
 
 Returns XAU/USD ML signal.
@@ -73,6 +74,10 @@ wss://ws.eodhistoricaldata.com/ws/forex?api_token=YOUR_API_KEY
 
 POST /api/run/pattern-engine
 
+=======
+### POST /api/run/pattern-engine
+```json
+main
 {
   "last_n": 500,
   "select_top": 0.3,
@@ -133,11 +138,27 @@ docker-compose up --build
 
 ⸻
 
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
 Testing
+=======
+codex/generate-full-stack-trading-dashboard-code-cvecet
+## Order Block Detector (SMC)
+
+See the integration guide: `docs/order_blocks.md`
+
+## RTYHIIM Detector
+
+See the integration guide: `docs/rtyhiim.md`
+
+=======
+main
+## E2E Checklist
+ main
 
 bash scripts/test_api.sh
 
 
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
 ⸻
 
 E2E Checklist
@@ -163,3 +184,14 @@ Update PATTERN_ENGINE_PATH.
 Set EODHD_API_KEY and verify symbol subscription (e.g. XAUUSD).
 	•	Marketaux errors
 Set MARKETAUX_API_KEY for sentiment ingestion.
+=======
+- **CORS issues**: Ensure backend runs on port `8000` and frontend on `3000`.
+- **Model not found**: Verify `.env` paths to model files.
+- **Claude errors**: Confirm `ANTHROPIC_API_KEY` is set.
+- **Pattern engine runtime missing**: Update `PATTERN_ENGINE_PATH`.
+codex/generate-full-stack-trading-dashboard-code-cvecet
+=======
+- **EODHD WebSocket**: Set `EODHD_API_KEY` and verify your symbol subscription (e.g. `XAUUSD`).
+- **Marketaux errors**: Set `MARKETAUX_API_KEY` for sentiment news ingestion.
+ main
+ main

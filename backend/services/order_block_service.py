@@ -11,6 +11,10 @@ from backend.order_block_detector import Candle, OrderBlockConfig, OrderBlockDet
 from backend.services.ml_service import run_nasdaq_signal, run_xauusd_signal
 from backend.services.pattern_analyzer import run_claude_pattern_analysis
 from backend.services.sentiment_analyzer import run_claude_sentiment
+codex/generate-full-stack-trading-dashboard-code-sj6rja
+=======
+from backend.services.rtyhiim_service import run_rtyhiim_detector
+ main
 
 
 @dataclass
@@ -110,6 +114,10 @@ class OrderBlockService:
             ml = run_nasdaq_signal()
         claude = run_claude_pattern_analysis("NDX.INDX", ["5m"])
         sentiment = await run_claude_sentiment()
+codex/generate-full-stack-trading-dashboard-code-sj6rja
+=======
+        rtyhiim = run_rtyhiim_detector(symbol, "1m")
+ main
 
         confidence = (ml.confidence + sentiment.get("confidence", 0.0)) / 2
         action = "STRONG BUY" if ml.signal == "BUY" else "NEUTRAL"
@@ -121,10 +129,17 @@ class OrderBlockService:
                 "Order block detection active",
                 f"Claude patterns aligned: {list(claude['analyses'].keys())[0]}",
                 f"Market sentiment: {sentiment.get('sentiment', 'NEUTRAL')}",
+codex/generate-full-stack-trading-dashboard-code-sj6rja
             ],
         }
 
 
+=======
+                f"RTYHIIM rhythm: {rtyhiim['state']['pattern_type']}",
+            ],
+        }
+
+ main
     def _generate_candles(self, limit: int) -> List[Candle]:
         prices = np.cumsum(np.random.normal(scale=0.8, size=limit)) + 21500
         candles: List[Candle] = []

@@ -3,7 +3,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
 from typing import List
+=======
+codex/generate-full-stack-trading-dashboard-code-cvecet
+from typing import List
+=======
+from typing import List, Optional
+ main
+ main
 
 from backend.config import settings
 
@@ -22,7 +30,15 @@ def _path_exists(path: str) -> bool:
     return Path(path).expanduser().exists()
 
 
+codex/generate-full-stack-trading-dashboard-code-sj6rja
 def _base_metrics(trend: str, current_price: float | None) -> dict:
+=======
+codex/generate-full-stack-trading-dashboard-code-cvecet
+def _base_metrics(trend: str, current_price: float | None) -> dict:
+=======
+def _base_metrics(trend: str, current_price: Optional[float]) -> dict:
+ main
+ main
     return {
         "distance_to_ema": 50.0,
         "distance_to_support": -200.0,
@@ -33,7 +49,15 @@ def _base_metrics(trend: str, current_price: float | None) -> dict:
     }
 
 
+ codex/generate-full-stack-trading-dashboard-code-sj6rja
 def run_nasdaq_signal(current_price: float | None = None) -> SignalResult:
+=======
+codex/generate-full-stack-trading-dashboard-code-cvecet
+def run_nasdaq_signal(current_price: float | None = None) -> SignalResult:
+=======
+def run_nasdaq_signal(current_price: Optional[float] = None) -> SignalResult:
+ main
+ main
     model_ok = _path_exists(settings.nasdaq_model_path)
     status = None if model_ok else f"Model path not found: {settings.nasdaq_model_path}"
     reasoning = [
@@ -53,7 +77,15 @@ def run_nasdaq_signal(current_price: float | None = None) -> SignalResult:
     )
 
 
+codex/generate-full-stack-trading-dashboard-code-sj6rja
 def run_xauusd_signal(current_price: float | None = None) -> SignalResult:
+=======
+codex/generate-full-stack-trading-dashboard-code-cvecet
+def run_xauusd_signal(current_price: float | None = None) -> SignalResult:
+=======
+def run_xauusd_signal(current_price: Optional[float] = None) -> SignalResult:
+ main
+main
     model_ok = _path_exists(settings.xauusd_model_path)
     status = None if model_ok else f"Model path not found: {settings.xauusd_model_path}"
     reasoning = [
